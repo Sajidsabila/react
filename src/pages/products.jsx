@@ -1,4 +1,5 @@
 import CartProduct from "../components/Fragments/Card"
+import Counter from "../components/Fragments/Counter";
 
 
 const ProductPage = () => {
@@ -23,17 +24,23 @@ const ProductPage = () => {
         }
     ];
 return (
-    <div className="flex justify-center">
+    <>
+      <div className="flex justify-center">
 
-   {products.map((product, index) => (
-       <CartProduct>
-       <CartProduct.Header image={product.image}></CartProduct.Header>
-       <CartProduct.Body title={product.title}>{product.description} 
-       </CartProduct.Body>
-       <CartProduct.Footer price={product.price}></CartProduct.Footer>
-       </CartProduct>
-   ))}
-    </div>
+{products.map((product, index) => (
+    <CartProduct>
+    <CartProduct.Header image={product.image}></CartProduct.Header>
+    <CartProduct.Body title={product.title}>{product.description} 
+    </CartProduct.Body>
+    <CartProduct.Footer price={product.price}></CartProduct.Footer>
+    </CartProduct>
+))}
+ </div>
+ <div className="flex justify-center mt-10">
+     <Counter/>
+ </div>
+    </>
+  
 )
 }
 export default ProductPage
