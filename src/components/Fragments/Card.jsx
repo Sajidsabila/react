@@ -4,7 +4,7 @@ const CartProduct = (props) => {
     const {children} = props;
 
     return (
-         <div className="w-full max-w-sm  bg-gray-800  border border-gray-200 rounded-lg shadow flex flex-col justify-between">
+         <div className="w-full max-w-sm  bg-gray-800 my-2 mx-2 border border-gray-200 rounded-lg shadow flex flex-col justify-between">
 
         {children}
          </div>
@@ -14,7 +14,7 @@ const Header = (props) => {
     const {image} = props
     return (
          <a href="/">
-            <img src={image} alt="products" className="p-8 rounded-lg"/>
+            <img src={image} alt="products" className="p-8 rounded-lg "/>
         </a>
     )
 }
@@ -38,11 +38,11 @@ const Body = (props) => {
 }
 
 const Footer = (props) => {
-    const {price} = props
+    const {price, addToCart, id} = props
     return (
         <div className="flex items-center justify-between px-5 pb-5">
-            <span className="tet-xl font-bold text-white">{price}</span>
-           <Button className="bg-blue-600">Add to Cart</Button>
+            <span className="tet-xl font-bold text-white">{price.toLocaleString('id-ID', {style: 'currency', currency: 'IDR'})}</span>
+           <Button className="bg-blue-600" onClick={() => addToCart(id)}>Add to Cart</Button>
         </div>
     )
 }
