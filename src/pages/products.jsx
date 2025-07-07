@@ -5,6 +5,7 @@ import Counter from "../components/Fragments/Counter";
 
 const ProductPage = () => {
     const [cart, setCart] = useState([
+        // sementara dummy
         {
             id: 1,
             name: "Sepatu Baru 1", 
