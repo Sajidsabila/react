@@ -1,52 +1,53 @@
-import Button from '../Elements/Button';
-const CartProduct = (props) => {
+import Button from "../Elements/Button";
 
-    const {children} = props;
+const CartProduct = ({ children }) => {
+  return (
+    <div className="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-md flex flex-col justify-between overflow-hidden">
+      {children}
+    </div>
+  );
+};
 
-    return (
-         <div className="w-full max-w-sm  bg-gray-800 my-2 mx-2 border border-gray-200 rounded-lg shadow flex flex-col justify-between">
+const Header = ({ image }) => {
+  return (
+    <div className="bg-gray-900">
+      <img
+        src={image}
+        alt="Product"
+        className="p-6 rounded-t-lg object-cover w-full h-48"
+      />
+    </div>
+  );
+};
 
-        {children}
-         </div>
-    )
-}
-const Header = (props) => {
-    const {image} = props
-    return (
-         <a href="/">
-            <img src={image} alt="products" className="p-8 rounded-lg "/>
-        </a>
-    )
-}
-const Body = (props) => {
-    const {children, title} = props  
-    return (
-        <>
-        <div className="px-5 pb-5 h-full">
-            <a href="">
-                <h5 className="text-xl font-semibold tracking-light text-white">
-                    {title}
-                </h5>
-                <p className="text-m text-white">
-                  {children}
-                </p>
-            </a>
-        </div>
-        
-        </>
-    )
-}
+const Body = ({ title, children }) => {
+  return (
+    <div className="px-6 pb-4">
+      <h5 className="text-lg font-semibold text-white mb-2">{title}</h5>
+      <p className="text-sm text-gray-300 leading-relaxed">{children.substring(0, 100)}...</p>
+    </div>
+  );
+};
 
-const Footer = (props) => {
-    const {price, addToCart, id} = props
-    return (
-        <div className="flex items-center justify-between px-5 pb-5">
-            <span className="tet-xl font-bold text-white">{price.toLocaleString('id-ID', {style: 'currency', currency: 'IDR'})}</span>
-           <Button className="bg-blue-600" onClick={() => addToCart(id)}>Add to Cart</Button>
-        </div>
-    )
-}
+const Footer = ({ price, addToCart, id }) => {
+  return (
+    <div className="flex items-center justify-between px-6 pb-6">
+      <span className="text-white font-bold text-lg">
+        {price.toLocaleString("id-ID", {
+          style: "currency",
+          currency: "IDR",
+        })}
+      </span>
+      <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => addToCart(id)}>
+        Add to Cart
+      </Button>
+    </div>
+  );
+};
+
+// Assign subcomponents
 CartProduct.Header = Header;
 CartProduct.Body = Body;
 CartProduct.Footer = Footer;
-export default CartProduct
+
+export default CartProduct;
